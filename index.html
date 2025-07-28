@@ -51,32 +51,40 @@
   <main>
     <section>
       <h2>Privacy Policy</h2>
-      <p><strong>Effective Date:</strong> July 28, 2025</p>
-      <p>At HabitsFlow, your privacy is very important to us. This Privacy Policy explains how we handle your data.</p>
+      <p>This Privacy Policy describes how your personal information is handled in the HabitsFlow mobile application ("the App").</p>
       <ul>
-        <li><strong>Data Collection:</strong> We do not collect or store your personal data on our servers. Your data is stored locally on your device and optionally synced via iCloud. We do not have access to any of your data.</li>
-        <li><strong>Third-Party Analytics:</strong> We may use analytics tools (e.g., Firebase Analytics) to collect anonymous usage statistics to improve the app.</li>
-        <li><strong>Security:</strong> iCloud synchronization is protected by Apple’s security policies. We do not store or transmit data on our servers.</li>
-        <li><strong>Your Consent:</strong> By using the app, you agree to this Privacy Policy.</li>
-        <li><strong>Changes:</strong> If we update the policy, we will notify users through the app or this website.</li>
+        <li><strong>1. No Personal Data Collection:</strong> We do not collect, store, or transmit any personally identifiable information. All data you enter into the App is stored locally on your device and optionally synchronized via Apple’s iCloud service. This synchronization is subject to Apple’s privacy and security policies, and we do not have access to your iCloud data.</li>
+        <li><strong>2. Use of Analytics:</strong> We may use third-party analytics providers (such as Firebase Analytics) to help us understand aggregate trends and user behavior. This may include information such as device type, session duration, and feature usage. These data are collected anonymously and cannot be used to identify individual users.</li>
+        <li><strong>3. Security:</strong> We implement reasonable safeguards to protect data stored locally on your device. However, users are responsible for maintaining the security of their devices and iCloud accounts.</li>
+        <li><strong>4. Children's Privacy:</strong> The App is not intended for use by children under the age of 13. We do not knowingly collect any personal information from children.</li>
+        <li><strong>5. Consent:</strong> By using the App, you consent to this Privacy Policy. If you do not agree with it, please do not use the App.</li>
+        <li><strong>6. Changes to This Policy:</strong> We may update this Privacy Policy at any time. Any changes will be posted on this page with an updated effective date. Continued use of the App after any such changes constitutes your consent to the revised policy.</li>
       </ul>
     </section>
 
     <section>
       <h2>Terms of Use</h2>
-      <p><strong>Effective Date:</strong> July 28, 2025</p>
+      <p><strong>Effective Date:</strong> <span id="effective-date"></span></p>
       <ul>
-        <li><strong>Usage:</strong> The app is provided as-is for personal use to manage habits and to-do tasks. Do not misuse the service.</li>
-        <li><strong>iCloud Sync:</strong> The app uses Apple iCloud for data synchronization. You are responsible for managing your iCloud account access.</li>
-        <li><strong>Analytics:</strong> We use anonymous analytics to understand and improve user experience.</li>
-        <li><strong>Intellectual Property:</strong> All rights to the design, branding, and code belong to the developer.</li>
-        <li><strong>Disclaimer:</strong> We are not liable for any data loss, errors, or damages related to the use of the app.</li>
-        <li><strong>Changes:</strong> Continued use of the app means you accept any updated terms.</li>
+        <li><strong>1. Acceptance of Terms:</strong> By downloading, accessing, or using the HabitsFlow application ("the App"), you agree to be bound by these Terms of Use. If you do not agree to these terms, do not use the App.</li>
+        <li><strong>2. License:</strong> We grant you a personal, non-transferable, non-exclusive license to use the App on your devices in accordance with these terms.</li>
+        <li><strong>3. User Responsibility:</strong> You are solely responsible for how you use the App, including any data you input and store. You must not use the App in any unlawful or harmful manner.</li>
+        <li><strong>4. Data Synchronization:</strong> The App may offer the ability to synchronize your data via Apple’s iCloud service. You are responsible for enabling and managing this functionality through your Apple ID. We do not control or have access to any iCloud data.</li>
+        <li><strong>5. Analytics:</strong> Anonymous usage statistics may be collected through third-party analytics services to improve the functionality and user experience of the App. No personally identifiable data is collected.</li>
+        <li><strong>6. Intellectual Property:</strong> All intellectual property rights in and to the App, including but not limited to design, source code, content, and branding, are and shall remain the exclusive property of the developer.</li>
+        <li><strong>7. Disclaimer of Warranties:</strong> The App is provided "as is" without warranties of any kind. We make no guarantees regarding the reliability, availability, or performance of the App.</li>
+        <li><strong>8. Limitation of Liability:</strong> Under no circumstances shall the developer be held liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use the App.</li>
+        <li><strong>9. Termination:</strong> We reserve the right to suspend or terminate your access to the App at our sole discretion, without prior notice or liability, for any reason.</li>
+        <li><strong>10. Changes to Terms:</strong> We reserve the right to revise these Terms of Use at any time. Continued use of the App after such changes constitutes your acceptance of the revised terms.</li>
       </ul>
     </section>
   </main>
   <footer>
-    &copy; 2025 HabitsFlow. All rights reserved.
+    &copy; <span id="year"></span> HabitsFlow. All rights reserved.
   </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("effective-date").textContent = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+  </script>
 </body>
 </html>
