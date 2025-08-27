@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Daily Habits: HabitsFlow — Build Better Habits</title>
+        <meta
+            name="description"
+            content="HabitsFlow helps you build better habits and routines with minimal effort. Track daily goals, stay motivated, and visualize your progress with stats and charts."
+        />
+        <meta
+            name="keywords"
+            content="habit tracker,nawyki,habits,productivity,przypomnienia,statystyki,habit flow,habitsflow"
+        />
+
+        <!-- Open Graph / Twitter -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Daily Habits: HabitsFlow" />
+        <meta
+            property="og:description"
+            content="Build better habits with minimal effort. Track goals, stay motivated, see stats and charts."
+        />
+        <meta property="og:image" content="og-image.png" />
+        <meta
+            property="og:url"
+            content="https://YOUR-USERNAME.github.io/habitsflow/"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <!-- PWA-ish bits (optional, safe to keep) -->
+        <link rel="icon" href="favicon.png" />
+        <meta name="theme-color" content="#0a0a0a" />
+
+        <style>
+            :root {
+                --bg: #0b1220;
+                --card: #101827;
+                --card-2: #0f1624;
+                --text: #e5e7eb;
+                --muted: #9ca3af;
+                --accent: #60a5fa;
+                --border: #1f2937;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                margin: 0;
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    Inter, Helvetica, Arial, sans-serif;
+                color: var(--text);
+                background:
+                    radial-gradient(
+                        1200px 800px at 80% -20%,
+                        rgba(96, 165, 250, 0.15),
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        900px 600px at -10% 20%,
+                        rgba(236, 72, 153, 0.1),
+                        transparent 60%
+                    ),
+                    linear-gradient(180deg, #0b1220 0%, #0b1220 100%);
+            }
+            a {
+                color: var(--text);
+                text-decoration: none;
+            }
+            .wrap {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 24px;
+            }
+
+            /* Header */
+            .nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+            }
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-weight: 700;
+                letter-spacing: 0.2px;
+            }
+            .brand img {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+            }
+            .lang {
+                display: flex;
+                gap: 8px;
+            }
+            .lang a {
+                padding: 6px 10px;
+                border: 1px solid var(--border);
+                border-radius: 999px;
+                color: var(--muted);
+            }
+            .lang a.active {
+                color: var(--text);
+                border-color: var(--accent);
+            }
+
+            /* Hero */
+            .hero {
+                display: grid;
+                grid-template-columns: 1.1fr 1fr;
+                gap: 28px;
+                align-items: center;
+                margin-top: 28px;
+            }
+            .card {
+                background: linear-gradient(
+                    180deg,
+                    var(--card) 0%,
+                    var(--card-2) 100%
+                );
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                padding: 28px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+            }
+            .title {
+                font-size: clamp(28px, 4vw, 44px);
+                margin: 0 0 8px;
+            }
+            .subtitle {
+                color: var(--muted);
+                font-size: clamp(16px, 2.2vw, 18px);
+                margin: 0 0 18px;
+            }
+
+            .cta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                align-items: center;
+            }
+            .btn-primary {
+                background: #111827;
+                border: 1px solid #1f2937;
+                color: #fff;
+                padding: 12px 16px;
+                border-radius: 12px;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                transition:
+                    transform 0.06s ease,
+                    background 0.2s ease;
+            }
+            .btn-primary:hover {
+                transform: translateY(-1px);
+                background: #0f172a;
+            }
+            .btn-ghost {
+                color: var(--muted);
+                border: 1px solid var(--border);
+                padding: 10px 14px;
+                border-radius: 12px;
+            }
+
+            .features {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+            .feature-item {
+                background: #0d1424;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 14px;
+                color: #d1d5db;
+            }
+            .feature-item h4 {
+                margin: 0 0 6px;
+                font-size: 16px;
+            }
+            .feature-item p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 14px;
+            }
+
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 10px;
+            }
+            .shot {
+                overflow: hidden;
+                border-radius: 16px;
+                border: 1px solid var(--border);
+                background: #0e1626;
+                aspect-ratio: 9/19.5;
+            }
+            .shot img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Sections */
+            section {
+                margin-top: 28px;
+            }
+            h3 {
+                margin: 0 0 12px;
+                font-size: 20px;
+            }
+
+            /* Footer */
+            footer {
+                margin: 48px 0 12px;
+                color: var(--muted);
+                font-size: 14px;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .links {
+                display: flex;
+                gap: 14px;
+            }
+
+            /* Responsive */
+            @media (max-width: 920px) {
+                .hero {
+                    grid-template-columns: 1fr;
+                }
+                .gallery {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+            @media (max-width: 520px) {
+                .features {
+                    grid-template-columns: 1fr;
+                }
+                .gallery {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+
+        <!-- Structured data for SEO -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "MobileApplication",
+                "name": "Daily Habits: HabitsFlow",
+                "operatingSystem": "iOS",
+                "applicationCategory": "LifestyleApplication",
+                "url": "https://YOUR-USERNAME.github.io/habitsflow/",
+                "downloadUrl": "https://apps.apple.com/app/idYOUR_APP_ID",
+                "inLanguage": ["en", "pl"],
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <!-- Header -->
+            <header class="nav">
+                <div class="brand">
+                    <img src="app-icon.png" alt="HabitsFlow App Icon" />
+                    <span>HabitsFlow</span>
+                </div>
+                <nav class="lang">
+                    <a href="?lang=en" id="lang-en">EN</a>
+                    <a href="?lang=pl" id="lang-pl">PL</a>
+                </nav>
+            </header>
+
+            <!-- Hero -->
+            <section class="hero">
+                <div class="card">
+                    <h1 class="title lang-en">
+                        Build better habits with minimal effort.
+                    </h1>
+                    <h1 class="title lang-pl" hidden>
+                        Buduj lepsze nawyki przy minimalnym wysiłku.
+                    </h1>
+
+                    <p class="subtitle lang-en">
+                        Track daily goals, stay motivated, and visualize your
+                        progress with stats and charts.
+                    </p>
+                    <p class="subtitle lang-pl" hidden>
+                        Śledź codzienne cele, utrzymuj motywację i wizualizuj
+                        postępy dzięki statystykom i wykresom.
+                    </p>
+
+                    <div class="cta">
+                        <a
+                            class="btn-primary"
+                            href="https://apps.apple.com/app/idYOUR_APP_ID"
+                        >
+                            <span aria-hidden></span>
+                            <span class="lang-en"
+                                >Download on the App Store</span
+                            >
+                            <span class="lang-pl" hidden
+                                >Pobierz w App Store</span
+                            >
+                        </a>
+                        <a class="btn-ghost" href="#features"
+                            ><span class="lang-en">See features</span
+                            ><span class="lang-pl" hidden
+                                >Zobacz funkcje</span
+                            ></a
+                        >
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="gallery">
+                        <div class="shot">
+                            <img
+                                src="screenshot-1.png"
+                                alt="HabitsFlow screenshot 1"
+                            />
+                        </div>
+                        <div class="shot">
+                            <img
+                                src="screenshot-2.png"
+                                alt="HabitsFlow screenshot 2"
+                            />
+                        </div>
+                        <div class="shot">
+                            <img
+                                src="screenshot-3.png"
+                                alt="HabitsFlow screenshot 3"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section id="features">
+                <h3 class="lang-en">Key Features</h3>
+                <h3 class="lang-pl" hidden>Najważniejsze funkcje</h3>
+                <div class="features">
+                    <div class="feature-item">
+                        <h4 class="lang-en">Create custom habits</h4>
+                        <h4 class="lang-pl" hidden>Twórz własne nawyki</h4>
+                        <p class="lang-en">
+                            Set up daily, weekly, or flexible routines in
+                            seconds.
+                        </p>
+                        <p class="lang-pl" hidden>
+                            Konfiguruj codzienne, tygodniowe lub elastyczne
+                            rutyny w kilka sekund.
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="lang-en">Set reminders & goals</h4>
+                        <h4 class="lang-pl" hidden>
+                            Ustawiaj przypomnienia i cele
+                        </h4>
+                        <p class="lang-en">
+                            Never miss a streak with smart notifications.
+                        </p>
+                        <p class="lang-pl" hidden>
+                            Nie przegap serii dzięki inteligentnym
+                            powiadomieniom.
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="lang-en">Visualize your progress</h4>
+                        <h4 class="lang-pl" hidden>Wizualizuj swoje postępy</h4>
+                        <p class="lang-en">
+                            Clean stats and charts that keep you motivated.
+                        </p>
+                        <p class="lang-pl" hidden>
+                            Przejrzyste statystyki i wykresy, które motywują do
+                            działania.
+                        </p>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="lang-en">iCloud sync</h4>
+                        <h4 class="lang-pl" hidden>Synchronizacja iCloud</h4>
+                        <p class="lang-en">
+                            Your data stays private and available across
+                            devices.
+                        </p>
+                        <p class="lang-pl" hidden>
+                            Twoje dane pozostają prywatne i dostępne na
+                            wszystkich urządzeniach.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ / Pricing blurb (optional) -->
+            <section>
+                <h3 class="lang-en">Subscriptions</h3>
+                <h3 class="lang-pl" hidden>Subskrypcje</h3>
+                <div class="card">
+                    <p class="lang-en">
+                        Weekly and annual auto‑renewable plans are available.
+                        Pricing may vary by region.
+                    </p>
+                    <p class="lang-pl" hidden>
+                        Dostępne są tygodniowe i roczne plany z automatycznym
+                        odnawianiem. Ceny mogą się różnić w zależności od
+                        regionu.
+                    </p>
+                    <p class="lang-en" style="color: var(--muted)">
+                        Manage or cancel anytime in your App Store account
+                        settings.
+                    </p>
+                    <p class="lang-pl" hidden style="color: var(--muted)">
+                        Zarządzaj subskrypcją lub anuluj w dowolnym momencie w
+                        ustawieniach konta App Store.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer>
+                <div class="links">
+                    <a href="mailto:support@yourdomain.com" class="lang-en"
+                        >Support</a
+                    >
+                    <a
+                        href="mailto:support@yourdomain.com"
+                        class="lang-pl"
+                        hidden
+                        >Wsparcie</a
+                    >
+                    <a href="privacy.html" class="lang-en">Privacy Policy</a>
+                    <a href="privacy.html" class="lang-pl" hidden
+                        >Polityka prywatności</a
+                    >
+                    <a href="terms.html" class="lang-en">Terms</a>
+                    <a href="terms.html" class="lang-pl" hidden>Regulamin</a>
+                </div>
+                <div>© <span id="year"></span> HabitsFlow</div>
+            </footer>
+        </div>
+
+        <script>
+            // Language handling: ?lang=en / ?lang=pl (fallback to browser language)
+            (function () {
+                const params = new URLSearchParams(window.location.search);
+                let lang = (params.get("lang") || "").toLowerCase();
+                if (!["en", "pl"].includes(lang)) {
+                    const nav = (
+                        navigator.language ||
+                        navigator.userLanguage ||
+                        "en"
+                    ).toLowerCase();
+                    lang = nav.startsWith("pl") ? "pl" : "en";
+                }
+                document.documentElement.lang = lang;
+                const en = lang === "en";
+                document
+                    .querySelector("#lang-en")
+                    ?.classList.toggle("active", en);
+                document
+                    .querySelector("#lang-pl")
+                    ?.classList.toggle("active", !en);
+                document
+                    .querySelectorAll(".lang-en")
+                    .forEach((el) => (el.hidden = !en));
+                document
+                    .querySelectorAll(".lang-pl")
+                    .forEach((el) => (el.hidden = en));
+                // Dynamic year
+                document.getElementById("year").textContent =
+                    new Date().getFullYear();
+            })();
+        </script>
+    </body>
+</html>
